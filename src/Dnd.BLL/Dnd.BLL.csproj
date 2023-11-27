@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+      <PackageReference Include="Dapper" Version="2.1.24" />
+      <PackageReference Include="MediatR" Version="12.2.0" />
+      <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+      <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.0-preview3.23201.1" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Dnd.DAL\Dnd.DAL.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Mapping\Extensions\" />
+      <Folder Include="Mediator\Handlers\" />
+      <Folder Include="Mediator\RequestCommands\" />
+      <Folder Include="Mediator\ResponseCommands\" />
+      <Folder Include="Services\" />
+    </ItemGroup>
+
+</Project>

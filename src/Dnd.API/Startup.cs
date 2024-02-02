@@ -1,7 +1,8 @@
-﻿using MediatR;
-using Dnd.BLL.Mapping;
+﻿using Dnd.BLL.Mapping;
 using Dnd.DAL.Factories;
 using Dnd.DAL.Factories.Interfaces;
+using Dnd.DAL.Repositories.Implementation;
+using Dnd.DAL.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 
 namespace Dnd.API;
@@ -13,12 +14,15 @@ public class Startup
         #region DataBase
 
         services.AddSingleton<IDbConnectionFactory<SqlConnection>, MsConnectionFactory>();
+        services.AddScoped<IPageRepository, PageRepository>();
         
         #endregion
 
-        services.AddSignalR();
+        services.AddAntiforgery();
+
+        //services.AddSignalR();
         services.AddAutoMapper(typeof(MappingProfile));
-        //services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+        services.AddMediatR(cpf=>cpf.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
@@ -31,7 +35,7 @@ public class Startup
                     .AllowAnyMethod()
                     .AllowCredentials();
             });
-
+        
         app.UseRouting();
         app.UseEndpoints(endpoints =>
         {

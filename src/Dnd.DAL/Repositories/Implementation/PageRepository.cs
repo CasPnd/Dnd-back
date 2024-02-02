@@ -19,8 +19,8 @@ public class PageRepository : IPageRepository
     {
         //TODO: Tags должны быть в отдельной таблице
         var sql =
-            "INSERT INTO pages " +
-            "(name, type, rare, sourse, text, mainimage, images, tags) " +
+            "INSERT INTO Pages " +
+            "(Name, Type, Rare, Sourse, Text, MainImage, Images, Tags) " +
             "VALUES(@Name, @Type, @rare, @Sourse, @Text, @MainImage, @Images, @Tags)";
 
         var connection = _dbConnectionFactory.CreateConnection();
